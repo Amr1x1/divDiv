@@ -155,7 +155,7 @@ local function newArea()
         if API.PInArea(3121, 10, 3217, 10, 0) then return end
         if not API.PInArea(3105, 5, 3298, 5, 0) then
             waitAnim()
-            LODESTONES.DraynorVillage()
+            LODESTONES.DRAYNOR_VILLAGE.Teleport()
         end
         run_to_tile(3121, 3217, 0)
 
@@ -176,14 +176,14 @@ local function newArea()
         if API.PInArea(3005, 10, 3402, 10, 0) then return end
         if not API.PInArea(2967, 5, 3403, 5, 0) then
             waitAnim()
-            LODESTONES.Falador()
+            LODESTONES.FALADOR.Teleport()
         end
         run_to_tile(3005, 3402, 0)
     elseif getDivinationLevel() < 30 then
         if API.PInArea(3302, 10, 3394, 10, 0) then return end
         if not API.PInArea(3214, 5, 3376, 5, 0) then
             waitAnim()
-            LODESTONES.Varrock()
+            LODESTONES.VARROCK.Teleport()
         end
         run_to_tile(3254, 3372, 0)
         run_to_tile(3302, 3394, 0)
