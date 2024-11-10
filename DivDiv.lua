@@ -207,8 +207,8 @@ local function newArea()
                     API.RandomSleep2(600, 600, 600)
                 end
             end
-            
         end
+        if not API.PInArea(2735, 50, 3458, 50, 0) then return end
         run_to_tile(2727,3470,0)
         run_to_tile(2741,3533,0)
         run_to_tile(2715,3543,0)
