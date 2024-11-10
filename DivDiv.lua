@@ -208,7 +208,7 @@ local function newArea()
                 end
             end
         end
-        run_to_tile(2735,3482,0)
+        run_to_tile(2728,3481,0)
         run_to_tile(2741,3533,0)
         run_to_tile(2715,3543,0)
         run_to_tile(2697,3542,0)
