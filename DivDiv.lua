@@ -199,22 +199,27 @@ local function newArea()
         end
     elseif getDivinationLevel() < 50 then
         if API.PInArea(2769, 10, 3597, 10, 0) then return end
-        if API.PInArea(2734, 10, 3414, 10, 0) then
-            waitAnim()
-            
-            run_to_tile(2735,3482,0)
-            run_to_tile(2741,3533,0)
-            run_to_tile(2715,3543,0)
-            run_to_tile(2697,3542,0)
-            run_to_tile(2663,3557,0)
-            run_to_tile(2652,3585,0)
-
-            run_to_tile(2653,3608,0)
-
-            run_to_tile(2700,3601,0)
-            run_to_tile(2732,3595,0)
-            run_to_tile(2769,3590,0)
+        if not API.PInArea(2734, 10, 3414, 10, 0) then
+            if API.InvItemFound1(8010) then
+                waitAnim()
+                API.DoAction_Inventory1(8010,0,1,API.OFF_ACT_GeneralInterface_route)
+                while API.Read_LoopyLoop() and not API.PInArea(2756, 5, 3477, 5, 0) do
+                    API.RandomSleep2(600, 600, 600)
+                end
+            end
         end
+        run_to_tile(2735,3482,0)
+        run_to_tile(2741,3533,0)
+        run_to_tile(2715,3543,0)
+        run_to_tile(2697,3542,0)
+        run_to_tile(2663,3557,0)
+        run_to_tile(2652,3585,0)
+
+        run_to_tile(2653,3608,0)
+
+        run_to_tile(2700,3601,0)
+        run_to_tile(2732,3595,0)
+        run_to_tile(2769,3590,0)
     elseif getDivinationLevel() < 60 then
         if API.PInArea(2888, 10, 3047, 10, 0) then return end
         if not API.PInArea(2803, 5, 3086, 5, 0) and API.InvItemFound1(19479) then
