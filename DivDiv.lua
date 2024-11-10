@@ -199,7 +199,7 @@ local function newArea()
         end
     elseif getDivinationLevel() < 50 then
         if API.PInArea(2769, 10, 3597, 10, 0) then return end
-        if not API.PInArea(2734, 10, 3414, 10, 0) then
+        if not API.PInArea(2769, 10, 3597, 10, 0) then
             if API.InvItemFound1(8010) then
                 waitAnim()
                 API.DoAction_Inventory1(8010,0,1,API.OFF_ACT_GeneralInterface_route)
