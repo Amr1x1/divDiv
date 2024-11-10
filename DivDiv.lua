@@ -220,7 +220,7 @@ local function newArea()
 
         run_to_tile(2700,3601,0)
         run_to_tile(2732,3595,0)
-        run_to_tile(2769,3590,0)
+        run_to_tile(2769,3595,0)
         
     elseif getDivinationLevel() < 60 then
         if API.PInArea(2888, 10, 3047, 10, 0) then return end
