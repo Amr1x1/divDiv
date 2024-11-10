@@ -25,7 +25,7 @@ local function run_to_tile(x, y, z)
     API.DoAction_WalkerW(tile)
 
 
-    local threshold = math.random(2, 5)
+    local threshold = math.random(4, 6)
     while API.Read_LoopyLoop() and API.Math_DistanceW(API.PlayerCoord(), tile) > threshold do
         API.RandomSleep2(200, 200, 200)
     end
@@ -208,10 +208,12 @@ local function newArea()
             run_to_tile(2697,3542,0)
             run_to_tile(2663,3557,0)
             run_to_tile(2652,3585,0)
+
             run_to_tile(2653,3608,0)
-            run_to_tile(2704,3616,0)
-            run_to_tile(2734,3606,0)
-            run_to_tile(2771,3593,0)
+
+            run_to_tile(2700,3601,0)
+            run_to_tile(2732,3595,0)
+            run_to_tile(2769,3590,0)
         end
     elseif getDivinationLevel() < 60 then
         if API.PInArea(2888, 10, 3047, 10, 0) then return end
