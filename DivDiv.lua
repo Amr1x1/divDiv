@@ -1,4 +1,4 @@
-print("Run Lua script Test.")
+
 
 local API = require("api")
 API.Write_fake_mouse_do(false)
