@@ -1,4 +1,6 @@
-
+local isSeersLodeUnlocked = true
+local isKaramjaLodeUnlocked = true
+local isOoglogLodeUnlocked = true
 
 local API = require("api")
 API.Write_fake_mouse_do(false)
@@ -152,7 +154,7 @@ end
 local function newArea()
     if not API.Read_LoopyLoop() or not API.PlayerLoggedIn() then return end
     if getDivinationLevel() < 10 then
-        if API.PInArea(3121, 10, 3217, 10, 0) then return end
+        if API.PInArea(3121, 12, 3217, 12, 0) then return end
         if not API.PInArea(3105, 5, 3298, 5, 0) then
             waitAnim()
             LODESTONES.DRAYNOR_VILLAGE.Teleport()
@@ -173,7 +175,7 @@ local function newArea()
         API.DoAction_Interface(0x24,0xffffffff,1,131,8,-1,API.OFF_ACT_GeneralInterface_route)
         API.RandomSleep2(600, 600, 600)
     elseif getDivinationLevel() < 20 then
-        if API.PInArea(3005, 10, 3402, 10, 0) then return end
+        if API.PInArea(3005, 12, 3402, 12, 0) then return end
         if not API.PInArea(2967, 5, 3403, 5, 0) then
             waitAnim()
             LODESTONES.FALADOR.Teleport()
@@ -196,19 +198,30 @@ local function newArea()
                 API.RandomSleep2(600, 600, 600)
             end
             run_to_tile(2734, 3417, 0)
+        elseif isSeersLodeUnlocked and not API.PInArea(2769, 12, 3597, 12, 0) and not API.PInArea(2756, 8, 3477, 8, 0) and not API.PInArea(2735, 50, 3458, 50, 0) then
+            waitAnim()
+            LODESTONES.SEERS_VILLAGE.Teleport()
+            run_to_tile(2719,3461,0)
+            run_to_tile(2727,3437,0)
+            run_to_tile(2735,3412,0)
         end
     elseif getDivinationLevel() < 50 then
-        if API.PInArea(2769, 10, 3597, 10, 0) then return end
-        if not API.PInArea(2769, 10, 3597, 10, 0) then
+        if API.PInArea(2769, 12, 3597, 12, 0) then return end
+        if not API.PInArea(2769, 12, 3597, 12, 0) and not API.PInArea(2756, 8, 3477, 8, 0) then
             if API.InvItemFound1(8010) then
                 waitAnim()
                 API.DoAction_Inventory1(8010,0,1,API.OFF_ACT_GeneralInterface_route)
-                while API.Read_LoopyLoop() and not API.PInArea(2756, 5, 3477, 5, 0) do
+                while API.Read_LoopyLoop() and not API.PInArea(2756, 8, 3477, 8, 0) do
                     API.RandomSleep2(600, 600, 600)
                 end
             end
         end
-        if not API.PInArea(2735, 50, 3458, 50, 0) and not API.PInArea(2756, 5, 3477, 5, 0) and not API.PInArea(2769, 10, 3597, 10, 0) then return end
+        if not API.PInArea(2735, 50, 3458, 50, 0) and not API.PInArea(2756, 8, 3477, 8, 0) and not API.PInArea(2769, 12, 3597, 12, 0) then 
+            return 
+        elseif isSeersLodeUnlocked and not API.PInArea(2769, 12, 3597, 12, 0) and not API.PInArea(2756, 8, 3477, 8, 0) and not API.PInArea(2735, 50, 3458, 50, 0) then
+            waitAnim()
+            LODESTONES.SEERS_VILLAGE.Teleport()
+        end
         run_to_tile(2727,3470,0)
         run_to_tile(2741,3533,0)
         run_to_tile(2715,3543,0)
@@ -223,30 +236,49 @@ local function newArea()
         run_to_tile(2769,3595,0)
         
     elseif getDivinationLevel() < 60 then
-        if API.PInArea(2888, 10, 3047, 10, 0) then return end
+        if API.PInArea(2888, 12, 3047, 12, 0) then return end
         if not API.PInArea(2803, 5, 3086, 5, 0) and API.InvItemFound1(19479) then
             waitAnim()
             API.DoAction_Inventory1(19479,0,1,API.OFF_ACT_GeneralInterface_route)
-            while API.Read_LoopyLoop() and not API.PInArea(2803, 5, 3086, 5, 0) do
+            while API.Read_LoopyLoop() and not API.PInArea(2803, 8, 3086, 8, 0) do
                 API.RandomSleep2(600, 600, 600)
             end
             run_to_tile(2841,3061, 0)
             run_to_tile(2872,3049, 0)
             run_to_tile(2887,3047, 0)
+        elseif isKaramjaLodeUnlocked and not API.PInArea(2803, 5, 3086, 5, 0) and not API.PInArea(2888, 12, 3047, 12, 0) then
+            waitAnim()
+            LODESTONES.KARAMJA.Teleport()
+            run_to_tile(2780,3132,0)
+            run_to_tile(2798,3117,0)
+            run_to_tile(2818,3109,0)
+            run_to_tile(2840,3092,0)
+            run_to_tile(2853,3068,0)
+            run_to_tile(2861,3055,0)
+            run_to_tile(2872,3039,0)
+            run_to_tile(2887,3046,0)
         end
     else
-        if not API.PInArea(2420, 10, 2863, 10, 0) and API.InvItemFound1(2552) then
+        if not API.PInArea(2420, 12, 2863, 12, 0) and API.InvItemFound1(2552) then
             waitAnim()
             API.DoAction_Inventory1(2552,0,7,API.OFF_ACT_GeneralInterface_route2)
             while API.Read_LoopyLoop() and not API.Compare2874Status(13, false) do
                 API.RandomSleep2(600, 600, 600)
             end
             API.DoAction_Interface(0xffffffff,0xffffffff,0,720,23,-1,API.OFF_ACT_GeneralInterface_Choose_option)
-            while API.Read_LoopyLoop() and not API.PInArea(2411, 8, 2848, 8, 0) do
+            while API.Read_LoopyLoop() and not API.PInArea(2411, 10, 2848, 10, 0) do
                 API.RandomSleep2(600, 600, 600)
             end
-            run_to_tile(2420,2862, 0)
-        end 
+            run_to_tile(2420,2862, 0) 
+        elseif isOoglogLodeUnlocked and not API.PInArea(2420, 12, 2863, 12, 0) and not API.PInArea(2411, 10, 2848, 10, 0) then
+            if not API.PInArea(2532, 5, 2871, 5, 0) then
+                waitAnim()
+                LODESTONES.OOGLOG.Teleport()
+                run_to_tile(2486,2885,0)
+                run_to_tile(2452,2884,0)
+                run_to_tile(2422,2865,0)
+            end
+        end
     end
 end
 
@@ -255,12 +287,12 @@ API.ScriptRuntimeString()
 API.GetTrackedSkills()
 
 
-
 API.Write_LoopyLoop(true)
 while(API.Read_LoopyLoop())
 do-----------------------------------------------------------------------------------
 
-newArea()
+if not API.InvFull_() and API.ReadPlayerAnim() == 0 then newArea() end  
+
 
 divDiv()
 UTILS:antiIdle()
