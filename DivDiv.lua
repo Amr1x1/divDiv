@@ -1,6 +1,6 @@
-local isSeersLodeUnlocked = true
-local isKaramjaLodeUnlocked = true
-local isOoglogLodeUnlocked = true
+local isSeersLodeUnlocked = false
+local isKaramjaLodeUnlocked = false
+local isOoglogLodeUnlocked = false
 
 local API = require("api")
 API.Write_fake_mouse_do(false)
