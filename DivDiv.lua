@@ -8,7 +8,9 @@ API.Write_fake_mouse_do(false)
 local UTILS = require("utils")
 local LODESTONES = require("lodestones")
 
-
+local interfaces = {
+    mostAnnoyingInterfaceInTheGame = { { 955,4,-1,-1,0 }, { 955,6,-1,4,0 }, { 955,9,-1,6,0 }, { 955,10,-1,9,0 }, { 955,13,-1,10,0 }, { 955,13,0,13,0 } }
+}
 
 local function waitForVB(number)
     while API.Read_LoopyLoop() and not API.Compare2874Status(number, false) do
@@ -71,9 +73,24 @@ local function getDivinationLevel()
     return API.XPLevelTable(currentExp)
 end
 
+local function isInterfaceVisible(interface_components)
+    return API.ScanForInterfaceTest2Get(false, interface_components)[1].x ~= nil 
+        and API.ScanForInterfaceTest2Get(false, interface_components)[1].x ~= 0
+end
 
 local function divDiv()
     if not API.Read_LoopyLoop() or not API.PlayerLoggedIn() then return end
+
+    if isInterfaceVisible(interfaces['mostAnnoyingInterfaceInTheGame']) then
+        print("Closing annoying interface")
+        API.DoAction_Interface(0x24,0xffffffff,1,955,18,-1,API.OFF_ACT_GeneralInterface_route)
+        API.RandomSleep2(2200, 1200, 1000)
+        if not API.InventoryInterfaceCheckvarbit() then
+            print("Open inventory")
+            API.DoAction_Interface(0xc2,0xffffffff,1,1431,0,9,API.OFF_ACT_GeneralInterface_route)
+            API.RandomSleep2(600, 0, 1200)
+        end
+    end
 
     if API.InvItemFound1(39486) then
         API.DoAction_Inventory1(39486,0,3,API.OFF_ACT_GeneralInterface_route)
