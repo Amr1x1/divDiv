@@ -1,6 +1,7 @@
 local isSeersLodeUnlocked = false
 local isKaramjaLodeUnlocked = false
 local isOoglogLodeUnlocked = false
+local isCanafisLodeUnlocked = false
 
 local API = require("api")
 API.Write_fake_mouse_do(false)
@@ -237,7 +238,7 @@ local function newArea()
         
     elseif getDivinationLevel() < 60 then
         if API.PInArea(2888, 12, 3047, 12, 0) then return end
-        if not API.PInArea(2803, 5, 3086, 5, 0) and API.InvItemFound1(19479) then
+        if API.InvItemFound1(19479) then
             waitAnim()
             API.DoAction_Inventory1(19479,0,1,API.OFF_ACT_GeneralInterface_route)
             while API.Read_LoopyLoop() and not API.PInArea(2803, 8, 3086, 8, 0) do
@@ -246,9 +247,9 @@ local function newArea()
             run_to_tile(2841,3061, 0)
             run_to_tile(2872,3049, 0)
             run_to_tile(2887,3047, 0)
-        elseif isKaramjaLodeUnlocked and not API.PInArea(2803, 5, 3086, 5, 0) and not API.PInArea(2888, 12, 3047, 12, 0) then
+        elseif isKaramjaLodeUnlocked and not API.PInArea(2888, 12, 3047, 12, 0) then
             waitAnim()
-            LODESTONES.KARAMJA.Teleport()
+            if not API.PInArea(2803, 5, 3086, 5, 0) then LODESTONES.KARAMJA.Teleport() end
             run_to_tile(2780,3132,0)
             run_to_tile(2798,3117,0)
             run_to_tile(2818,3109,0)
@@ -258,7 +259,7 @@ local function newArea()
             run_to_tile(2872,3039,0)
             run_to_tile(2887,3046,0)
         end
-    else
+    elseif getDivinationLevel() < 70 then
         if not API.PInArea(2420, 12, 2863, 12, 0) and API.InvItemFound1(2552) then
             waitAnim()
             API.DoAction_Inventory1(2552,0,7,API.OFF_ACT_GeneralInterface_route2)
@@ -271,13 +272,18 @@ local function newArea()
             end
             run_to_tile(2420,2862, 0) 
         elseif isOoglogLodeUnlocked and not API.PInArea(2420, 12, 2863, 12, 0) and not API.PInArea(2411, 10, 2848, 10, 0) then
-            if not API.PInArea(2532, 5, 2871, 5, 0) then
-                waitAnim()
-                LODESTONES.OOGLOG.Teleport()
-                run_to_tile(2486,2885,0)
-                run_to_tile(2452,2884,0)
-                run_to_tile(2422,2865,0)
-            end
+            waitAnim()
+            if not API.PInArea(2532, 5, 2871, 5, 0) then LODESTONES.OOGLOG.Teleport() end
+            run_to_tile(2486,2885,0)
+            run_to_tile(2452,2884,0)
+            run_to_tile(2422,2865,0)
+        end
+    elseif getDivinationLevel() >= 70 and isCanafisLodeUnlocked then
+        if not API.PInArea(3468, 12, 3537, 12, 0) then
+            waitAnim()
+            if not API.PInArea(3517, 5, 3515, 5, 0) then LODESTONES.CANIFIS.Teleport() end
+            run_to_tile(3477,3521,0)
+            run_to_tile(3468,3538,0)
         end
     end
 end
@@ -290,6 +296,7 @@ API.GetTrackedSkills()
 API.Write_LoopyLoop(true)
 while(API.Read_LoopyLoop())
 do-----------------------------------------------------------------------------------
+    
 
 if not API.InvFull_() and API.ReadPlayerAnim() == 0 then newArea() end  
 
