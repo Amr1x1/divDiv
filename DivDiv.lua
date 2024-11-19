@@ -215,6 +215,7 @@ local function newArea()
             while API.Read_LoopyLoop() and not API.PInArea(2756, 5, 3477, 5, 0) do
                 API.RandomSleep2(600, 600, 600)
             end
+            API.RandomSleep2(600, 600, 600)
             run_to_tile(2734, 3417, 0)
         elseif isSeersLodeUnlocked and not API.PInArea(2769, 12, 3597, 12, 0) and not API.PInArea(2756, 8, 3477, 8, 0) and not API.PInArea(2735, 50, 3458, 50, 0) then
             waitAnim()
@@ -232,6 +233,7 @@ local function newArea()
                 while API.Read_LoopyLoop() and not API.PInArea(2756, 8, 3477, 8, 0) do
                     API.RandomSleep2(600, 600, 600)
                 end
+                API.RandomSleep2(600, 600, 600)
             end
         end
         if not API.PInArea(2735, 50, 3458, 50, 0) and not API.PInArea(2756, 8, 3477, 8, 0) and not API.PInArea(2769, 12, 3597, 12, 0) then 
@@ -261,6 +263,7 @@ local function newArea()
             while API.Read_LoopyLoop() and not API.PInArea(2803, 8, 3086, 8, 0) do
                 API.RandomSleep2(600, 600, 600)
             end
+            API.RandomSleep2(600, 600, 600)
             run_to_tile(2841,3061, 0)
             run_to_tile(2872,3049, 0)
             run_to_tile(2887,3047, 0)
