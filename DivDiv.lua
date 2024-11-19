@@ -85,11 +85,11 @@ local function divDiv()
         print("Closing annoying interface")
         API.DoAction_Interface(0x24,0xffffffff,1,955,18,-1,API.OFF_ACT_GeneralInterface_route)
         API.RandomSleep2(2200, 1200, 1000)
-        if not API.InventoryInterfaceCheckvarbit() then
-            print("Open inventory")
-            API.DoAction_Interface(0xc2,0xffffffff,1,1431,0,9,API.OFF_ACT_GeneralInterface_route)
-            API.RandomSleep2(600, 0, 1200)
-        end
+    end
+    if not API.InventoryInterfaceCheckvarbit() then
+        print("Open inventory")
+        API.DoAction_Interface(0xc2,0xffffffff,1,1431,0,9,API.OFF_ACT_GeneralInterface_route)
+        API.RandomSleep2(600, 0, 1200)
     end
 
     if API.InvItemFound1(39486) then
