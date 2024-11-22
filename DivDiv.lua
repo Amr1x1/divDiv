@@ -1,7 +1,7 @@
-local isSeersLodeUnlocked = false
-local isKaramjaLodeUnlocked = false
-local isOoglogLodeUnlocked = false
-local isCanafisLodeUnlocked = false
+local isSeersLodeUnlocked = true
+local isKaramjaLodeUnlocked = true
+local isOoglogLodeUnlocked = true
+local isCanafisLodeUnlocked = true
 
 local API = require("api")
 API.Write_fake_mouse_do(false)
@@ -226,7 +226,7 @@ local function newArea()
         end
     elseif getDivinationLevel() < 50 then
         if API.PInArea(2769, 12, 3597, 12, 0) then return end
-        if not API.PInArea(2769, 12, 3597, 12, 0) and not API.PInArea(2756, 8, 3477, 8, 0) then
+        if not API.PInArea(2769, 12, 3597, 12, 0) and not API.PInArea(2756, 8, 3477, 8, 0) and API.InvItemFound1(8010) then
             if API.InvItemFound1(8010) then
                 waitAnim()
                 API.DoAction_Inventory1(8010,0,1,API.OFF_ACT_GeneralInterface_route)
@@ -235,10 +235,7 @@ local function newArea()
                 end
                 API.RandomSleep2(600, 600, 600)
             end
-        end
-        if not API.PInArea(2735, 50, 3458, 50, 0) and not API.PInArea(2756, 8, 3477, 8, 0) and not API.PInArea(2769, 12, 3597, 12, 0) then 
-            return 
-        elseif isSeersLodeUnlocked and not API.PInArea(2769, 12, 3597, 12, 0) and not API.PInArea(2756, 8, 3477, 8, 0) and not API.PInArea(2735, 50, 3458, 50, 0) then
+        elseif isSeersLodeUnlocked and not API.PInArea(2769, 12, 3597, 12, 0) and not API.PInArea(2756, 8, 3477, 8, 0) then
             waitAnim()
             LODESTONES.SEERS_VILLAGE.Teleport()
         end
