@@ -52,7 +52,7 @@ local function harvest()
     local i = 0
     while API.Read_LoopyLoop() and API.ReadPlayerAnim() == 0 do
         API.RandomSleep2(200, 200, 200)
-        if i >= 6 then
+        if i >= 10 then
             if API.GetAllObjArray1({87306, 93489}, 1, {12})[1] ~= nil or not API.ReadPlayerMovin2() then
                 math.randomseed(os.time())
                 API.DoAction_Tile(WPOINT.new(API.PlayerCoord().x + math.random(-2, 2), API.PlayerCoord().y + math.random(-2, 2), API.PlayerCoord().z))
